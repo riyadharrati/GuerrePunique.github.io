@@ -1,0 +1,286 @@
+/* ============================================================
+   GENERAL
+   ============================================================ */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #D1CAB0;
+    font-family: Arial;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    font-weight: bold;
+}
+
+img {
+    display: inline-block;
+    margin: 10px;
+}
+
+
+/* ============================================================
+   HEADER ET TITRE ANIMÉ
+   ============================================================ */
+header {
+    background-color: #6B4E8A;
+    padding: 20px;
+}
+
+.titre-anime {
+    text-align: center;
+    color: #D1CAB0;
+    animation: lettres 2s ease;
+}
+
+@keyframes lettres {
+    from { opacity: 0; letter-spacing: 30px; }
+    to   { opacity: 1; letter-spacing: normal; }
+}
+
+
+/* ============================================================
+   MENU DE NAVIGATION
+   ============================================================ */
+#menu-toggle {
+    display: none;
+}
+
+nav {
+    position: fixed;
+    left: -200px;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #6B4E8A;
+    transition: left 0.3s;
+    overflow-y: auto;
+}
+
+nav a {
+    display: block;
+    color: #D1CAB0;
+    padding: 15px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #4A3566;
+}
+
+#menu-toggle:checked + label + nav {
+    left: 0;
+}
+
+label {
+    font-size: 30px;
+    cursor: pointer;
+    padding: 10px 15px;
+    background-color: #6B4E8A;
+    color: #D1CAB0;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
+
+
+/* ============================================================
+   SECTIONS DE CONTENU
+   ============================================================ */
+.images-centre {
+    text-align: center;
+}
+
+.section {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #BFB89A;
+    border-radius: 8px;
+    text-align: left;
+}
+
+
+/* ============================================================
+   SOURCES ET LIENS
+   ============================================================ */
+.source a {
+    color: #6B4E8A;
+    font-style: italic;
+}
+
+.source a:hover {
+    color: #4A3566;
+}
+
+
+/* ============================================================
+   MENTION LÉGALE
+   ============================================================ */
+p.mentionlegal {
+    color: #4A3566;
+    text-align: center;
+}
+
+
+/* ============================================================
+   MASONRY GRID (grille d'images en cascade)
+   ============================================================ */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+
+.column {
+    flex: 25%;
+    max-width: 25%;
+    padding: 0 4px;
+}
+
+.column img {
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+    .column {
+        flex: 50%;
+        max-width: 50%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        flex: 100%;
+        max-width: 100%;
+    }
+}
+
+
+/* ============================================================
+   EFFET GLITCH / CYBERPUNK (utilisé sur certains titres)
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+.glitch {
+    font-size: 4rem;
+    position: relative;
+    text-transform: uppercase;
+    color: white;
+    animation: glitch 1s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+    background:  #BFB89A;
+    overflow: hidden;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 red;
+    clip: rect(0, 0, 0, 0);
+    animation: glitch-before 0.5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 blue;
+    clip: rect(0, 0, 0, 0);
+    animation: glitch-after 0.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch {
+    0%   { transform: skew(0deg); }
+    20%  { transform: skew(-5deg); }
+    40%  { transform: skew(5deg); }
+    60%  { transform: skew(-5deg); }
+    80%  { transform: skew(5deg); }
+    100% { transform: skew(0deg); }
+}
+
+@keyframes glitch-before {
+    0%   { clip: rect(10px, 9999px, 50px, 0); }
+    100% { clip: rect(30px, 9999px, 80px, 0); }
+}
+
+@keyframes glitch-after {
+    0%   { clip: rect(20px, 9999px, 60px, 0); }
+    100% { clip: rect(40px, 9999px, 90px, 0); }
+}
+
+/* ============================================================
+   PARALLAX
+   ============================================================ */
+.parallax {
+    background-image: url("../images/indexbackground.png");
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* ============================================================
+	ONGLET
+   ============================================================ */
+.tab { display: flex; }
+
+.tab a {
+  flex: 1;
+  text-align: center;
+  padding: 16px;
+  background: #6B4E8A;
+  color: #D1CAB0;
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid #D1CAB0;
+}
+
+.tab a:hover { background: #D1CAB0; color: #6B4E8A; }
+
+.tabcontent {
+  display: none;
+  padding: 20px;
+  background: #D1CAB0;
+  color: #6B4E8A;
+  border: 2px solid #6B4E8A;
+}
+
+.tabcontent:target { display: block; }
+/* ============================================================
+	TABLEAU
+   ============================================================ */
+
+table {
+  width: 80%;
+  margin: 30px auto;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 2px solid #6B4E8A;
+  padding: 12px;
+  text-align: center;
+}
+
+th, td:first-child {
+  background: #6B4E8A;
+  color: #D1CAB0;
+  font-weight: bold;
+}
+table img { width: 80px; }
